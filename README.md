@@ -10,4 +10,3 @@ You get the reference implementation of the Trustworthy Factory which help the d
 Why to get it
 
 Helping the developer to produce trustworthy application is most for security aspects. Based on Trustworthy attributes (Which are non-functional requirements), the factory help the developer to increase the code quality of his application regarding the trustworthy objectives fixed a the beginning of the project
-
