@@ -46,7 +46,7 @@ The installation of a new plugin is realised by following the 3 steps:
 # After the selection, the usage licence must be accepted in order to complete the installation.
 In the Trustworthy Factory case, the following plugin must be installed:
 :: 	
-	+----------------------+-----------------------------------------------------------------------------------------------+-------------------+
+    +----------------------+-----------------------------------------------------------------------------------------------+-------------------+
     | Tool                 | Update site                                                                                   | Selection         |
     +----------------------+-----------------------------------------------------------------------------------------------+-------------------+
     | checkstyle           | http://eclipse-cs.sf.net/update/                                                              | All               |
@@ -55,7 +55,7 @@ In the Trustworthy Factory case, the following plugin must be installed:
     +----------------------+-----------------------------------------------------------------------------------------------+-------------------+
 	| findbugs             | http://findbugs.cs.umd.edu/eclipse	                                                           | All               |
     +----------------------+-----------------------------------------------------------------------------------------------+-------------------+
-	| codepro	           | http://dl.google.com/eclipse/inst/codepro/latest/3.7	                                       | All|	           |
+	| codepro              | http://dl.google.com/eclipse/inst/codepro/latest/3.7	                                       | All|	           |
     +----------------------+-----------------------------------------------------------------------------------------------+-------------------+
 	| Subversive	       | http://download.eclipse.org/technology/subversive/2.0/update-site/	                           | All|              |
     +----------------------+-----------------------------------------------------------------------------------------------+-------------------+
