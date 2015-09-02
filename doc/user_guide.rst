@@ -43,7 +43,7 @@ Authentication phase
 
 When the user wants to develop a new component by using the Trustworthy Java applications development factory, he starts the factory and enters his credentials in order to be authenticated. During the start-up of the factory based on eclipse, the following view appears in order to enter credentials:
 
-[[File:AuthN.png]]
+.. figure:: resources/AuthN.png
 
 In this view, the login and the password must be entered. Then press “OK” to validate. If the credentials are valid, the user reaches the workspace development view. If not, an error message appears:
 
@@ -368,5 +368,7 @@ This product will be the element pushed by the technology provider to the market
 
 - The DTWC is generated using the data collected during the certification workflow, the hash of the product is inserted into the certificate and signed with the certifier’s certificate defined in the preference pages of the IDE;
 - The DTWC is transferred to the web service responsible to host all the certificate files.
+
+
 
 
