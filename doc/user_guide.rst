@@ -5,254 +5,336 @@ __________________________________________________
 Introduction
 ============
 
-Welcome the User and Programmer Guide for the Policy Manager Generic
-Enabler. The online documents are being continuously updated and
-improved, and so will be the most appropriate place to get the most up
-to date information on using this interface.
-
-Background and Detail
----------------------
-
-This User and Programmers Guide relates to the Policy Manager GE which
-is part of the `Cloud Hosting Chapter <Cloud_Hosting_Architecture>`__.
-Please find more information about this Generic Enabler in the following
-`Open Specification <FIWARE.OpenSpecification.Cloud.PolicyManager>`__.
+This section describes how to use the different factories used by the software developers and by the software designers. These factories are used to develop applications by writing source code and to certify application. For each one, a global scenario of development is given and the detailed activities. For java (and mobile) development factory, the pre-requisite is that the developers have enough skills to write java code. For the certifier, the goal of certification tool is to help the evaluator to produce evidences and, with that and with some other information, to deliver a Digital Trustworthiness Certificate (DTWC).
 
 User Guide
 ==========
+Global scenario description 
+---------------------------
 
-The Policy Manager GE is a backend component, without user interface.
-Therefore there is no need to provide a user guide. The Cloud Portal can
-be used for Web-based interaction (but it is not part of this GE).
+Two main scenarios, one for each profile.
+The development scenario
 
-Programmer Guide
-================
+The basic scenario for the trustworthy java application development factory is the following:
+- The developer starts his trustworthy java application development factory. During this step, he enters his credentials in order to access the environment;
+- The developer configures the environment by using the preference pages. During this phase, he configures the access to the SVN repository;
+- The developer creates a new Optet project. He uses the Optet wizard to configure this new project. 
+- The developer writes the application source code following the guidelines and performing the tasks he has to follow for a trustworthiness development. 
+- During the project, the developer could run static and runtime analysis in order to check the compliance with the TWAttributes requirements;
+- When the development of the application is finished, the developer archives the source code in the secure repository.
 
-Policy Manager API is based upon HTTP and therefore all devices, which
-can handle HTTP traffic, are possible clients.
+The certification scenario
+The basic scenario for the certification tool is the following:
+- The certifier starts his certification tools. During this step, the user enters his credentials in order to be admitted into the environment;
+- The certifier configures the environment using the preference pages. During this phase, he configures the access to the SVN repository and the certificate used to signed the DTWC;
+- The certifier creates a new Optet project. He uses the Optet wizard to configure this new project. At this stage, the certifier must select a project with the sources (coming from the development phase);
+- On the project, the certifier opens the workflow view of the certification process:
+	- The first step enables to define the software description regarding the input of the SVN file (TWProfile and CSM);
+	- The second phase enables to define the trustworthiness problem definition;
+	- The third phase enables to define the trustworthiness property specification;
+	- The fourth phase enables to run the analysis using the analysis plug-in (using the automatic functionality);
+	- The last phase enables to generate the DTWC[2] and the component.
+- When the certificate and the component are created, the certifier saves them in the secure repository. 
 
-Accessing Policy Manager from the CLI
--------------------------------------
+Authentication phase
+--------------------
 
-To invoke the REST API use the curl program. Curl
-`1 <http://curl.haxx.se/>`__ is a client to get documents/files from or
-send documents to a server, using any of the supported protocols (HTTP,
-HTTPS, FTP, GOPHER, DICT, TELNET, LDAP or FILE) and therefore is also
-usable for Policy Manager API. Use the curl command line tool or use
-libcurl from within your own programs in C. Curl is free and open
-software that compiles and runs under a wide variety of operating
-systems.
+When the user wants to develop a new component by using the Trustworthy Java applications development factory, he starts the factory and enters his credentials in order to be authenticated. During the start-up of the factory based on eclipse, the following view appears in order to enter credentials:
 
-In order to make a probe of the different functionalities related to the
-Policy Manager, we make a list of several operations to make a probe of
-the execution of these GEis.
+[[File:AuthN.png]]
 
-**1. Get a valid token for the tenant that we have (It is not a Policy
-Manager operation but a IdM operation).**
+In this view, the login and the password must be entered. Then press “OK” to validate. If the credentials are valid, the user reaches the workspace development view. If not, an error message appears:
 
-Due to all operations of the Policy Manager are using the security
-mechanism which is used in the rest of the cloud component, it is needed
-to provide a security token in order to continue with the rest of
-operations.
+[[File:AuthNFailed.png]]
 
+In this version, the login password for the development factory is dev/dev and for the certification tool is cert/cert.
+
+Configuration of the environment 
+--------------------------------
+
+The developer has to set the Optet. The configuration is done under a unique entry point into the Preferences pages of Eclipse.
+To access the Optet Preferences, click on Windows>Preferences>Optet Main Preferences
+The following page appears:
+
+[[File:preferencePage.png]]
+
+This page is the mother page presenting the Optet project. Under this page, all the Optet configuration pages are located, i.e.: 
+- Optet Certificate Preferences
+- Optet SVN Preferences
+- ...
+For the developer, only the Optet SVN preferences need to be used.
+
+**1. Optet SVN Preferences
+
+SVN tool plays the role of secure repository. This secure repository is used to store the Trustworthiness project coming from the design phase.
+
+[[File:svnPref.png]]
+
+The required data is:
+* The SVN Repository: the URL of the repository used shall be entered
+* The user credentials: the developer enters the SVN credentials used to interact with the SVN repository. (The credentials can be different from the factory credentials).
+The deployment of a SVN Repository is a pre-requisite for Java Trustworthiness factory and is not in his scope.
+
+**2. Optet Certification Preferences
+
+The Certificate Preferences allows the certifier to specify some required data about the generation of the certificate.
+
+[[File:image056.png]]
+
+At the end of the certification process, the certificate generated by the automatic process is signed using the certificate of the certifier. For that, the certifier must enter the element require in order to use his certificate ((see the keytool part). This certificate is stored in a key store and the access to this key store is specified (the path, the alias of the certificate, the password of the certificate, the password of the key store).
+
+When the certificate is generated, it’s stored locally and also pushed to external service (web service) in charge of storing all the certificates generated by the certification tool.
+
+Development of a Java application
+---------------------------------
+
+The development of a trustworthy Java application is based on the same mechanisms than for a standard Java application. The main steps are: 
+* To link this java development with trustworthy requirement coming from the secure repository. 
+* To write java source code for the application.
+
+=== Trustworthy requirements === 
+
+The trustworthy requirements for the Java development are present into the secure repository configured previously. This secure repository is composed of a set of projects. Each project is linked to a dedicated application which must be developed with the factory. The structure of each project is the following and it integrates data coming from the design phase (The TW profile, the CSM (Concrete System Model), etc...). All these data need to be set into the Secure repository during the design phase under a specific tree:
+ 
+[[File:svnTree.png]]
+
+* An output directory which  contains, at the end, the delivery and the TW certificate;
+* The sources directory which contains the sources produced during the development phase;
+* The TWProfile.xml file which is the file containing the evidence required by the assets;
+* The CSM.xml file which contains design data of the component to be developed;
+* The readme.txt file which contains information about the project required by the developer and /or the certifier.
+ 
+All these files are mandatory in order to start the development.
+
+**1. Java Project Creation
+The developer has fourpossibilities for a development using the Optet environment:
+* Start a new development from scratch;
+* Recover a previous development already developed using Optet 
+* Convert a standard java project into an Optet development.
+* Convert manually a standard java project into an Optet development.
+
+
+**1.A Start an empty SVN project
+In order to create a new Optet project, the developer must use the Optet Wizard. For this, click on File>New>Other>Optet certification>Optet Wizard
+
+[[File:wizard1.png]]
+
+At this step, the two next views will be the same as for a standard Java project.
+ 
+[[File:wizard2.png]]
+
+The developer must enter the name of the project, the location, the JRE used, etc...
+The second view is used to configure the Java settings 
+ 
+[[File:wizard3.png]]
+
+The last view links the future development with the SVN Optet project:
+
+[[File:wizard4.png]]
+
+With this view, the developer is connected to the secure SVN repository containing the entire trustworthiness project. The developer selects the project he wants to develop. Using the list on the left, the developer browses through the entire created project and sees the description and the content of the SVN repository. In this example, just the CSM.xml, the TWProfile.xml and the readme.txt file are present. 
+In this example, the checkout option shall not be set because the developer starts with an empty source folder.
+At the end, the project is created and is ready to be updated by the developer.
+
+**1.2. From an existing SVN project
+In this example, the developer must follow the development of an application already stored in the secure SVN repository. In this case, the principle is the same as previously except the phase of checkout. When the developer selects the project to extract, he selects the checkout option. At the end of the project, the sources of the development will be checked-out into the project workspace.
+
+**1.3. From an existing development
+The last example is when a development has already been done by the developer but was not attached to an Optet project. In this case, the developer must click on the Eclipse Toolbar optetMenu>Select project. The following view appears in order to give the opportunity to the developer to select the Optet project:
+ 
+[[File:wizard5.png]]
+
+When the project is selected, the developer validates his choice and selects the Java project he wants to associate. For this, the next view appears:
+ 
+[[File:wizard6.png]]
+
+The developer selects the project and validates the choice. After this, the current Java project is associated with the SVN Optet project defined in the secure SVN repository.
+
+**1.4. Manually from an existing development
+The TWProfile.xml and Optet.properties files must be created manually into an Optet directory on the project
+
+The TWProfile.xml must contains de TWAttributes expected with the metric and excepted values. The format must be like this
+:: 
+
+	 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+	 <TWProfile>
+		<TWAttribute name="Maintainability" attributeID="44">
+			<Metric name="documented elements" metricID="253" expectedValue="80"></Metric>
+		</TWAttribute>
+		<TWAttribute name="Flexibility/Robustness" attributeID="40">
+			<Metric name="interceptet errors" metricID="235" expectedValue="100"></Metric>
+		</TWAttribute>
+		<TWAttribute name="Change Cycle/Stability" attributeID="25">
+			<Metric name="Compliance with best programing practices" metricID="1154" expectedValue="60"></Metric>
+			<Metric name="unit test coverage for stability" metricID="1153" expectedValue="60"></Metric>
+				</TWAttribute>
+		<TWAttribute name="Reliability" attributeID="41">
+			<Metric name="Reliability of Software" metricID="243" expectedValue="90"></Metric>
+		</TWAttribute>
+		<TWAttribute name="Software Complexity" attributeID="41">
+			<Metric name="structure of the software" metricID="243" expectedValue="90"></Metric>
+		</TWAttribute>
+	 </TWProfile>
+
+The Optet.properties file must be like this
 ::
+ #Optet properties
+ #Sat Sep 06 16:33:16 CEST 2014
+ project.type=java
+ svn.project.selected=
 
-    curl -d '{"auth": {"tenantName": $TENNANT, "passwordCredentials":{"username": $USERNAME, "password": $PASSWORD}}}' 
-    -H "Content-type: application/json" -H "Accept: application/xml"  http://130.206.80.100:35357/v2.0/tokens
 
-Both $TENANT (Project), $USERNAME and $PASSWORD must be values
-previously created in the OpenStack Keystone. The IP address
-10.95.171.115 and the Port 35357 are the data of our internal
-installation of IdM, if you planned to execute it you must changed it by
-the corresponding IP and Port of the FIWARE Keystone or IdM IP and Port
-addresses.
+**2. Java Development
+After the creation of the java project, the developer write the source code of the application, he integrates different new components in order to be able to build the application he has to deliver. In this section, we consider that the developer has skills to write properly java source code
 
-We obtained two data from the previous sentence:
+**3. The analysis phase
+During the development of the component, the developer can run, at any time, the analysis (static and runtime) in order to evaluate the quality of his code with respect to the predefined trustworthiness requirements selected in the secure SVN repository.
+In order to launch the analysis project, the developer must use the contextual menu and select the desired analysis:
 
--  X-Auth-Token
+[[File:OptetMenu.png]]
 
-::
+**3.1. The static analysis
 
-    <token expires="2012-10-25T16:35:42Z" id="a9a861db6276414094bc1567f664084d">
+When the developer selects the static analysis, all the sources are checked regarding the trustworthiness requirements associated with the project. As results, all the malformations detected into the code are displayed. The display of this is realized into the OptetAudit view as follows:
 
--  Tenant-Id
+[[File:staticAnalysisRes.png]]
 
-::
+In this view, the developer can see:
+- The tool which detects the problem;
+- The file involved;
+- The line where the problem is;
+- The severity of the problem;
+- The rule set; 
+- The message of the problem;
+- The recommendation in order to solve it.
 
-    <tenant enabled="true" id="c907498615b7456a9513500fe24101e0" name=$TENNANT>
 
-**2. Get tenant information**
+**3.2. The runtime analysis
+When the developer selects the runtime analysis, the result is the execution of the unit tests present in the project. This allows the computation of some metrics like the coverage. The data is displayed using the result of the JUnit execution:
+ 
+[[File:JunitRes.png]]
 
-This is the first real operation about our GEi, by which we can obtain
-the information about the Policy Manager, together with the information
-about the window size fixed for the execution of the GEi. For more
-information about the window size and its meaning.
+For the coverage part, the results regarding the number of classes, methods, lines, etc... are displayed in another view, the OptetTestCoverage view:
 
-::
+[[File:testCoverage.png]]
 
-    curl -v -H 'X-Auth-Token: a9a861db6276414094bc1567f664084d' -X GET http://130.206.81.71:8000/v1.0/c907498615b7456a9513500fe24101e0
+**3.3. Optet Metric computation phase
+During this phase, a full analysis (static and runtime) is realised and computed regarding the required TWAttribute needed for this development. The output of the different analysis are computed using the method defined in the [7](To resume, the different evidence have weight with predefined values in order to calculate the TWAttribute value).
+The evidences detected by the factory have the following forms:
+* The unit test coverage : based on the execution of the unit test, the ratio number of method tested/ the total of all the methods are computed
+* The comment ratio : use the code analysis , the ratio of comments to the number of lines of code is computed
+* The Unit test ration : The number of test OK / The total of Tests is computed after the junit tests
+* The Rules : For a dedicated TWAttributes, a list of rules configures the static analysis plugins (PMD, codepro, Checkstyle and findbugs). When a rule is violated by the code, this rule is considered as failed. The computation is realised by using the number of violated rules over the total number of rules checked for the TWAtrribute.
+* The results of static checking of JML annotations (0 or 1 meaning true or false).
+* The results of dynamic checking of JML annotations (0 or 1 meaning true or false).
+Using these inputs, the computation could be realised by using the weight assigned to the different evidence. The configuration of the different evidence weight is configurable by using a specific configuration file. However, nobody must change it. 
+The result of this computation is display in the dedicated view “OptetMetric view” like this:
+ 
+[[File:computationResult.png]]
 
-This operation will return the information regarding the tenant details
-of the execution of the Policy Manager
+The specific case of the Availability is due to no evidence are found in order to compute the result.
 
-::
 
-    < HTTP/1.0 200 OK
-    < Date: Wed, 09 Apr 2014 08:25:17 GMT
-    < Server: WSGIServer/0.1 Python/2.6.6
-    < Content-Type: text/html; charset=utf-8
-    {
-        "owner": "Telefonica I+D", 
-        "doc": "https://forge.fi-ware.org/plugins/mediawiki/wiki/fi-ware-private/index.php/FIWARE.OpenSpecification.Details.Cloud.PolicyManager", 
-        "runningfrom": "14/04/09 07:45:22", 
-        "version": 1.0, 
-        "windowsize": 5
-    }
+**4. Commit phase
+When the developer considers that his code is compliant with the trustworthiness requirements, he stores his code into the secure SVN repository. For this, he selects the “commit source” entry present into the contextual menu. Using this command, the commit is realised in the sources directory of the Optet project (in the secure SVN repository associated).
+In order to just commit the required files, this view is displayed: 
+ 
+[[File:commit.png]]
+With this view, the developer could select each file on which make a commitment.
 
-**3. Create a rule for a server**
+Certification of a Java application
+-----------------------------------
+**1. Selection of the project to be certified
 
-This operation allows to create a specific rule associate to a server:
+The certifier needs to select a project from the secure SVN repository in order to certify it. In this case, the operation to load the project is the same as for the developer part (the case “From an existing SVN project”). This operation is the same for all kinds of project (Java, Web, mobile)
 
-::
+**2.  Certification process
 
-    curl -v -H 'X-Auth-Token: 86e096cd4de5490296fd647e21b7f0b4' -X POST http://130.206.81.71:8000/v1.0/6571e3422ad84f7d828ce2f30373b3d4/servers/32c23ac4-230d-42b6-81f2-db9bd7e5b790/rules/ -d '{"action": {"actionName": "notify-scale", "operation": "scaleUp"}, "name": "ScaleUpRule", "condition": { "cpu": { "value": 98, "operand": "greater" }, "mem": { "value": 95, "operand": "greater equal"}}}'
+To certify a component, a dashboard is dedicated in order to guide the certifier in the process. This dashboard is called using contextual menu of the project.
 
-The result of this operation is the following content:
+The following view appears:
 
-::
+[[File:dashboard.png]]
 
-    < HTTP/1.0 200 OK
-    < Date: Wed, 09 Apr 2014 10:14:11 GMT
-    < Server: WSGIServer/0.1 Python/2.6.6
-    < Content-Type: text/html; charset=utf-8
-    {
-        "serverId": "32c23ac4-230d-42b6-81f2-db9bd7e5b790", 
-        "ruleId": "68edb416-bfc6-11e3-a8b9-fa163e202949"
-    }
+For each step, a dedicated view helps the certifier to enter the required data. All the data is required for the successful completion of the certificate generation.
+**2.1. The software description
 
-**4. Subscribe the server to the rule**
+This view helps the certifier to describe the system and to define the certification perimeter:
 
-Through this operation we can subscribe a rule to be monitored in order
-to evaluate the rule to be processed.
+[[File:systemDesc.png]]
+ 
 
-::
+In this view, from the root element, we can create a subcomponent and associate either other components, or an attribute or a stakeholder to this component.
+- The Component: a component could be associated with another component, some attribute and some stakeholder.
+- The attributes: For the attributes, the certifier may select their type as InputParameter or OutputParameter and choose if this attribute is selected for the evaluation;
+- The Stakeholder: For the stakeholder, the certifier may select the type as End-user, System or Service. All the defined stakeholders are displayed in the stakeholders list for reuse if needed.
+**2.2. The Trustworthiness problem definition
 
-    curl -v -H 'X-Auth-Token: a9a861db6276414094bc1567f664084d' -X POST http://130.206.81.71:8000/v1.0/6571e3422ad84f7d828ce2f30373b3d4/servers/32c23ac4-230d-42b6-81f2-db9bd7e5b790/subscription -d '{ "ruleId": "ruleid", "url": "URL to notify any action" }'
+In this second phase, the certifier associates each asset present in the TOE with the potential problems to which the asset might be exposed.
 
-An the expected result is the following.
+[[File:problemDef.png]]
 
-::
+For the selected asset, the associated problems checked by the certifier will be also published in the DTWC. (The list of the possible problems is not already defined).
+**2.3. The Trustworthiness property specification
 
-    < HTTP/1.0 200 OK
-    < Date: Wed, 09 Apr 2014 10:16:11 GMT
-    < Server: WSGIServer/0.1 Python/2.6.6
-    < Content-Type: text/html; charset=utf-8
-    {
-        "serverId": "32c23ac4-230d-42b6-81f2-db9bd7e5b790", 
-        "subscriptionId": "6f231936-bfce-11e3-9a13-fa163e202949"
-    }
+In the next step, the certifier associates each asset present in the TOE with a list of TWAttributes defined in the system:
 
-**5. Manual simulation of data transmission to the server**
+[[File:propertySpec.png]]
 
-This operation simulate the operation that the context broker used to
-send data to the Policy Manager, the normal execution of this process
-will be automatically once that the Policy Manager subscribes a rule to
-a specific server. The operation is related to fiware-facts component and
-it has the following appearance:
+For this version the possible TWAttributes are:
+- Flexibility/Robustness (Intercepted errors)
+- Reliability (Reliability of Software)
+- Maintainability (Documented functions)
+- Change Cycle/Stability (unit test coverage for stability, Compliance with best programing practices)
+- Software Complexity (structure of the software)
 
-::
+On the right side, all the TW property specification created by the certifier appears. These TWproperties can be deleted if there is a need to.
+**2.4. The evidence
 
-    curl -v -H "Content-Type: application/json" -X POST http://127.0.0.1:5000/v1.0/6571e3422ad84f7d828ce2f30373b3d4/servers/serverI1 -d '{
-    "contextResponses": [
-        {
-            "contextElement": {
-               "attributes": [
-                   {
-                       "value": "0.12",
-                       "name": "usedMemPct",
-                       "type": "string"
-                   },
-                   {
-                       "value": "0.14",
-                       "name": "cpuLoadPct",
-                       "type": "string"
-                   },
-                   {
-                       "value": "0.856240",
-                       "name": "freeSpacePct",
-                       "type": "string"
-                   },
-                   {
-                       "value": "0.8122",
-                       "name": "netLoadPct",
-                       "type": "string"
-                   }
-               ],
-               "id": "Trento:193.205.211.69",
-               "isPattern": "false",
-               "type": "host"
-           },
-           "statusCode": {
-               "code": "200",
-               "reasonPhrase": "OK"
-           }
-       }]
-    }'
+At this stage, the certifier checks the code in order to find evidence to fill the data related to the trustworthiness attributes defined for the system in the evaluation report. The certifier has two possibilities:
+- Manual evaluation: In this case, the certifier must enter manually all the metrics values required by the certification process
+- Automatic evaluation: In this case, the certifier run automatically the static and runtime analysis in order to extract evidences. The computation of all the evidences found will use to fulfill the required TWAttributes metrics
 
-Which produces the following result after the execution:
+**2.4.1. Manual evaluation
+When the certifier selects manual evaluation, the following view appears:
 
-::
+[[File:evidences.png]]
 
-    * About to connect() to 127.0.0.1 port 5000 (#0)
-    *   Trying 127.0.0.1...
-    * Adding handle: conn: 0x7fa2e2804000
-    * Adding handle: send: 0
-    * Adding handle: recv: 0
-    * Curl_addHandleToPipeline: length: 1
-    * - Conn 0 (0x7fa2e2804000) send_pipe: 1, recv_pipe: 0
-    * Connected to 127.0.0.1 (127.0.0.1) port 5000 (#0)
-    > POST /v1.0/33/servers/44 HTTP/1.1
-    > User-Agent: curl/7.30.0
-    > Host: 127.0.0.1:5000
-    > Accept: */*
-    > Content-Type: application/json
-    > Content-Length: 1110
-    > Expect: 100-continue
-    > 
-    < HTTP/1.1 100 Continue
-    < HTTP/1.1 200 OK
-    < Content-Type: text/html; charset=utf-8
-    < Content-Length: 0
-    < Date: Wed, 09 Apr 2014 00:11:49 GMT
-    < 
-    * Connection #0 to host 127.0.0.1 left intact
+For each TWAttribute and the associated metrics, the user sets a value and the method used to find this value. The possible methods are:
+* Compute: if the certifier uses an external tool to evaluate the metric;
+* Inspection: if the certifier explores all the files manually in order to evaluate the metric;
+* Native: if the language properties used to develop the application imposes the metric.
 
-**6. Unsubscribe the previous rule**
+The certifier must set all the values required.
 
-In order to stop the process to evaluate rules, it is needed to
-unsubscribe the activated rule. We can do it with the following
-operation:
+In this view, the expected value for the metric is displayed indicating the required value. A specific icon helps to show rapidly if the computed value is under/over the expected value.
+**2.4.2. Automatic evaluation
 
-::
+In this case, the same view appears but with some not modifiable values. The values are coming from the automatic evaluation made when the certifier clicks on this “Automatic” button.
 
-    curl -v -H 'X-Auth-Token: a9a861db6276414094bc1567f664084d' -X DELETE http://130.206.81.71:8000/v1.0/6571e3422ad84f7d828ce2f30373b3d4/servers/serverI1/subscription/SubscriptionId
+When the values are coming from the automatic evaluation, the certifier can’t modify them. But, if the automatic evaluation can’t fulfill some attribute due to missing information, the certifier must enter the value manually.
 
-::
+[[File:evidences2.png]]
 
-    < HTTP/1.0 200 OK
-    < Date: Wed, 09 Apr 2014 10:16:59 GMT
-    < Server: WSGIServer/0.1 Python/2.6.6
-    < Content-Type: text/html; charset=utf-8
+**2.5. The DTWC[2] generation
 
-Accessing Policy Manager from a Browser
----------------------------------------
+This last step is carried out when all the previous steps are done. During this phase:
+- The product is compiled
 
-To send http commands to Policy Manager using browser, use:
+The compilation of the product is realised using the following interface
 
--  Chrome browser
-   `2 <http://www.google.es/chrome?platform=linux&hl=en-GB>`__ with the
-   Simple REST Client plugin
-   `3 <https://chrome.google.com/webstore/detail/fhjcajmcbmldlhcimfajhfbgofnpcjmb>`__
--  Firefox RESTClient add-ons
-   `4 <https://addons.mozilla.org/en-US/firefox/addon/restclient/>`__.
+[[File:compilation.png]]
+
+Using this interface, the certifier can select 3 possibilities to build the product: Maven, Ant or a Shell script. These three kinds of build are the common way to build a product into eclipse.
+
+Then, the certifier must select the build file using the browse button and indicate the target option defined into the build file.
+
+When the build is finished, the certifier must select the compiled product.
+
+[[File:compilationoutput.png]]
+
+This product will be the element pushed by the technology provider to the marketplace.
+- The DTWC is generated using the data collected during the certification workflow, the hash of the product is inserted into the certificate and signed with the certifier’s certificate defined in the preference pages of the IDE;
+- The DTWC is transferred to the web service responsible to host all the certificate files.
+
 
