@@ -63,7 +63,7 @@ In the Trustworthy Factory case, the following plugin must be installed:
     +-------------------+---------------------------------------------------------------------------------------+-------------------+
     | maven             | http://download.eclipse.org/technology/m2e/releases/1.3/1.3.1.20130219-1424           | All               |       
     +-------------------+---------------------------------------------------------------------------------------+-------------------+
-    | Eclemma           | http://update.eclemma.org/                                                            | All                   |
+    | Eclemma           | http://update.eclemma.org/                                                            | All               |
     +-------------------+---------------------------------------------------------------------------------------+-------------------+
 
 Then, the Trustworthy Factory update site must be installed to complete the installation. The installation is realised using the zip file of the trustworthy factory.
@@ -161,9 +161,9 @@ The CPU consuption is depending of the usage (édition, compilation, code genera
 I/O flows
 ---------
 
-Input flow
+Input flow: 
 No input flow must arrived to the factory
 
 
-output flows
+output flows: 
 The factory uses internet connection in order to access plugin repository and libraries repository. The required port are 80 and 443. Following the user usage, some specific repository must be access and the port is dependant of the repository specification
