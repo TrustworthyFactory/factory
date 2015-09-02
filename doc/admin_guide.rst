@@ -51,19 +51,19 @@ In the Trustworthy Factory case, the following plugin must be installed:
     +----------------------+-----------------------------------------------------------------------------------------------+-------------------+
     | checkstyle           | http://eclipse-cs.sf.net/update/                                                              | All               |
     +----------------------+-----------------------------------------------------------------------------------------------+-------------------+
-	| PMD	               | http://sourceforge.net/projects/pmd/files/pmd-eclipse/update-site/	                           | PMD for eclipse 4 |
+    | PMD	               | http://sourceforge.net/projects/pmd/files/pmd-eclipse/update-site/	                           | PMD for eclipse 4 |
     +----------------------+-----------------------------------------------------------------------------------------------+-------------------+
-	| findbugs             | http://findbugs.cs.umd.edu/eclipse	                                                           | All               |
+    | findbugs             | http://findbugs.cs.umd.edu/eclipse	                                                           | All               |
     +----------------------+-----------------------------------------------------------------------------------------------+-------------------+
-	| codepro              | http://dl.google.com/eclipse/inst/codepro/latest/3.7	                                       | All|	           |
+    | codepro              | http://dl.google.com/eclipse/inst/codepro/latest/3.7	                                       | All|	           |
     +----------------------+-----------------------------------------------------------------------------------------------+-------------------+
-	| Subversive	       | http://download.eclipse.org/technology/subversive/2.0/update-site/	                           | All|              |
+    | Subversive	       | http://download.eclipse.org/technology/subversive/2.0/update-site/	                           | All|              |
     +----------------------+-----------------------------------------------------------------------------------------------+-------------------+
-	| Subversive	       | http://community.polarion.com/projects/subversive/download/eclipse/4.0/update-site/ 	       | SVNKIT 1.8.4|     |
+    | Subversive	       | http://community.polarion.com/projects/subversive/download/eclipse/4.0/update-site/ 	       | SVNKIT 1.8.4|     |
     +----------------------+-----------------------------------------------------------------------------------------------+-------------------+
-	| maven	               | http://download.eclipse.org/technology/m2e/releases/1.3/1.3.1.20130219-1424	               | All               |       
+    | maven	               | http://download.eclipse.org/technology/m2e/releases/1.3/1.3.1.20130219-1424	               | All               |       
     +----------------------+-----------------------------------------------------------------------------------------------+-------------------+
-	| Eclemma	           | http://update.eclemma.org/	                                                                   | All               |
+    | Eclemma              | http://update.eclemma.org/	                                                                   | All               |
     +----------------------+-----------------------------------------------------------------------------------------------+-------------------+
 
 Then, the Trustworthy Factory update site must be installed to complete the installation. The installation is realised using the zip file of the trustworthy factory.
