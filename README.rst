@@ -27,8 +27,8 @@ Advanced topics
 
 - `Installation and administration <doc/admin_guide.rst>`_
 - `User and programmers guide <doc/user_guide.rst>`_
-- `Open Specification <doc/open_spec.rst>`_
-- `Architecture Description <doc/architecture.rst>`_
+- `Open Specification <http://forge.fiware.org/plugins/mediawiki/wiki/fiware/index.php/FIWARE.OpenSpecification.Security.TrustworthyFactory_R4>`_
+- `Architecture Description `_
 
 `Top`__.
 

@@ -1,4 +1,4 @@
-FIWARE Policy Manager - User and Programmers Guide
+FIWARE Trustworthy Factory - User and Programmers Guide
 __________________________________________________
 
 

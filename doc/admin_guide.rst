@@ -1,7 +1,7 @@
-FIWARE Policy Manager - Installation and Administration Guide
+FIWARE Trustworthy Factory - Installation and Administration Guide
 _____________________________________________________________
 
-Policy Manager Installation
+Trustworthy Factory Installation
 ===========================
 
 This guide tries to define the procedure to install the Trustworthy Factory
