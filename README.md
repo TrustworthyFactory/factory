@@ -19,3 +19,5 @@ For more information to use this Ge, please refer to offical guide http://factor
 
 For more information to install and administrate this Ge, please refer to offical guide http://factory.readthedocs.org/en/latest/doc/admin_guide.html
 
+*plugin generation*
+all the project present into https://github.com/TrustworthyFactory are required to generate the Trustworthy factory plugin to deploy into eclipse.
