@@ -15,19 +15,24 @@ Helping the developer to produce trustworthy application is most for security as
 
 					***********************
 
+FiWARE Catalogue link
+---------------------
+
+To access this GE, please, refer to the FiWARE catalogue http://catalogue.fiware.org/enablers/trustworthy-factory
+					
 User and Programmers Guide
 --------------------------
 
-For more information to use this Ge, please refer to offical guide http://factory.readthedocs.org/en/latest/doc/user_guide.html
+For more information to use this Ge, please, refer to offical guide http://factory.readthedocs.org/en/latest/doc/user_guide.html
 
 Installation and Administration Guide
 -------------------------------------
 
-For more information to install and administrate this Ge, please refer to offical guide http://factory.readthedocs.org/en/latest/doc/admin_guide.html
+For more information to install and administrate this Ge, please, refer to offical guide http://factory.readthedocs.org/en/latest/doc/admin_guide.html
 
 					***********************
 
-plugin generation
+Plugin generation
 -----------------
 
-all the project present into https://github.com/TrustworthyFactory are required to generate the Trustworthy factory plugin to deploy into eclipse.
+All the project present into https://github.com/TrustworthyFactory are required to generate the Trustworthy factory plugin to deploy into eclipse.
