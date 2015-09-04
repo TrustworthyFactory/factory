@@ -1,5 +1,6 @@
 # factory
-*What you get*
+What you get
+------------
 
 You get the reference implementation of the Trustworthy Factory which help the developer to create trusted applications This is addressed by the Trustworthy Factory GE which thrives on the following major innovations:
 
@@ -7,18 +8,26 @@ You get the reference implementation of the Trustworthy Factory which help the d
 * A specific development platform, dedicated to the development of applications for the trustworthy-by-design execution platform;
 * A Trustworthy Application Certification Platform supporting certificate editing, signature and binding (code labelling tool). 
 
-*Why to get it*
+Why to get it
+-------------
 
 Helping the developer to produce trustworthy application is most for security aspects. Based on Trustworthy attributes (Which are non-functional requirements), the factory help the developer to increase the code quality of his application regarding the trustworthy objectives fixed a the beginning of the project
 
-*User and Programmers Guide*
+					***********************
+
+User and Programmers Guide
+--------------------------
 
 For more information to use this Ge, please refer to offical guide http://factory.readthedocs.org/en/latest/doc/user_guide.html
 
-*Installation and Administration Guide*
+Installation and Administration Guide
+-------------------------------------
 
 For more information to install and administrate this Ge, please refer to offical guide http://factory.readthedocs.org/en/latest/doc/admin_guide.html
 
-*plugin generation*
+					***********************
+
+plugin generation
+-----------------
 
 all the project present into https://github.com/TrustworthyFactory are required to generate the Trustworthy factory plugin to deploy into eclipse.
