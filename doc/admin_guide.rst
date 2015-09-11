@@ -66,7 +66,7 @@ In the Trustworthy Factory case, the following plugin must be installed:
     | Eclemma           | http://update.eclemma.org/                                                            | All               |
     +-------------------+---------------------------------------------------------------------------------------+-------------------+
 
-Then, the Trustworthy Factory update site must be installed to complete the installation. The installation is realised using the zip file of the trustworthy factory.
+Then, the Trustworthy Factory update site must be installed to complete the installation. The installation is realised using the URL update site of the trustworthy factory (https://github.com/TrustworthyFactory/UpdatesiteFactory).
 
 
 At the end of the installation procedure, the eclipse.ini file must be modified. The line -product org.eclipse.platform.ide must be added/replaced in this file.
