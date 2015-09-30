@@ -55,8 +55,6 @@ In the Trustworthy Factory case, the following plugin must be installed:
     +-------------------+---------------------------------------------------------------------------------------+-------------------+
     | findbugs          | http://findbugs.cs.umd.edu/eclipse                                                    | All               |
     +-------------------+---------------------------------------------------------------------------------------+-------------------+
-    | codepro           | http://dl.google.com/eclipse/inst/codepro/latest/3.7                                  | All               |
-    +-------------------+---------------------------------------------------------------------------------------+-------------------+
     | Subversive        | http://download.eclipse.org/technology/subversive/2.0/update-site/                    | All               |
     +-------------------+---------------------------------------------------------------------------------------+-------------------+
     | Subversive        | http://community.polarion.com/projects/subversive/download/eclipse/4.0/update-site/   | SVNKIT 1.8.4      |

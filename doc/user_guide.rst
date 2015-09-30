@@ -222,7 +222,7 @@ In this view, the developer can see:
 - The recommendation in order to solve it.
 
 
-**4.2. The runtime analysis
+**4.2. The runtime analysis (Due to a license problem, the runtime analysis is desactivated)
 
 When the developer selects the runtime analysis, the result is the execution of the unit tests present in the project. This allows the computation of some metrics like the coverage. The data is displayed using the result of the JUnit execution:
  
@@ -241,9 +241,7 @@ The evidences detected by the factory have the following forms:
 * The unit test coverage : based on the execution of the unit test, the ratio number of method tested/ the total of all the methods are computed
 * The comment ratio : use the code analysis , the ratio of comments to the number of lines of code is computed
 * The Unit test ration : The number of test OK / The total of Tests is computed after the junit tests
-* The Rules : For a dedicated TWAttributes, a list of rules configures the static analysis plugins (PMD, codepro, Checkstyle and findbugs). When a rule is violated by the code, this rule is considered as failed. The computation is realised by using the number of violated rules over the total number of rules checked for the TWAtrribute.
-* The results of static checking of JML annotations (0 or 1 meaning true or false).
-* The results of dynamic checking of JML annotations (0 or 1 meaning true or false).
+* The Rules : For a dedicated TWAttributes, a list of rules configures the static analysis plugins (PMD, Checkstyle and findbugs). When a rule is violated by the code, this rule is considered as failed. The computation is realised by using the number of violated rules over the total number of rules checked for the TWAtrribute.
 
 Using these inputs, the computation could be realised by using the weight assigned to the different evidence. The configuration of the different evidence weight is configurable by using a specific configuration file. However, nobody must change it. 
 The result of this computation is display in the dedicated view “OptetMetric view” like this:
