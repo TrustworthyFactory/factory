@@ -25,8 +25,8 @@ __ `FIWARE Trustworthy Factory GE`_
 Advanced topics
 ===============
 
-- `Installation and administration <doc/admin_guide.rst>`_
-- `User and programmers guide <doc/user_guide.rst>`_
+- `Installation and administration <doc/admin_guide.html>`_
+- `User and programmers guide <doc/user_guide.html>`_
 - `Open Specification <http://forge.fiware.org/plugins/mediawiki/wiki/fiware/index.php/FIWARE.OpenSpecification.Security.TrustworthyFactory_R4>`_
 - Architecture Description
 
