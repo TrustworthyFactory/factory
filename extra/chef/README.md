@@ -12,7 +12,7 @@ Chef must be installed.
 Attributes
 ==========
 
-node[fiware-trustworthfactory]['app_dir'] contains the path to install
+node[fiware-trustworthyfactory]['app_dir'] contains the path to install
 
 Usage
 =====
