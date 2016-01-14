@@ -24,7 +24,7 @@ source_suffix = '.rst'
 master_doc = 'contents'
 
 # General information about the project.
-project = u'AuthZForce'
+project = u'Trustworthy Factory'
 copyright = u'2015, Thales Communications and Security'
 author = u'Frederic Motte'
 
