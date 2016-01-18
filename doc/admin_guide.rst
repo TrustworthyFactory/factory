@@ -21,14 +21,14 @@ Installation
 Two possible installation procedures could be used to have the Trustworthy Factory ready to use
 
 The Zip installation
-____________________
+++++++++++++++++++++
 
 The simplest solution is to take the Zip installation provided to extract the complete factory already configured for the development of Java application. For that, recover the Zip archive and unzip it.
 The factory is ready to use.
 
 
 The Eclipse update
-__________________
+++++++++++++++++++
 
 This installation is based on a virgin eclipse installation where all the plugins must be deployed. For that, an Kepler eclipse version must be used.
 The process is to use the update site of all the plugins in order to build the java factory.
