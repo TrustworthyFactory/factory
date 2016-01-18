@@ -10,7 +10,7 @@ if not on_rtd:  # only import and set the theme if we're building docs locally
     html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
 # otherwise, readthedocs.org uses their theme by default, so no need to specify it
-project = 'Trustworthy Factory'
+project = 'Trustworthy Factory - User and Programmers Guide'
 
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
@@ -24,7 +24,7 @@ source_suffix = '.rst'
 master_doc = 'contents'
 
 # General information about the project.
-project = u'Trustworthy Factory'
+project = u'Trustworthy Factory - User and Programmers Guide'
 copyright = u'2015, Thales Communications and Security'
 author = u'Frederic Motte'
 
