@@ -16,19 +16,19 @@ The pre-requisite for the java factory is a Windows OS  and a JDK1.7. The JAVA_H
 
 
 Installation
-============
+------------
 
 Two possible installation procedures could be used to have the Trustworthy Factory ready to use
 
 The Zip installation
---------------------
+____________________
 
 The simplest solution is to take the Zip installation provided to extract the complete factory already configured for the development of Java application. For that, recover the Zip archive and unzip it.
 The factory is ready to use.
 
 
 The Eclipse update
-------------------
+__________________
 
 This installation is based on a virgin eclipse installation where all the plugins must be deployed. For that, an Kepler eclipse version must be used.
 The process is to use the update site of all the plugins in order to build the java factory.
@@ -69,18 +69,6 @@ Then, the Trustworthy Factory update site must be installed to complete the inst
 
 At the end of the installation procedure, the eclipse.ini file must be modified. The line -product org.eclipse.platform.ide must be added/replaced in this file.
 The eclipse platform must be restarted at the end of the installation in order to activate all the options.
-
-
-Diagnosis Procedures
-====================
-
-The factory is based on Eclipse which provides error managements and diagnostic element. The factory follows this philosophy providing :
-
-- Error Dialogs: The factory displays messages using message dialogues to display information to the user (errors or informations)
-- Log information: the factory has a log file where problems are recorded. The log file can be found in a couple of places:
-	- Workspace log - This is the most common location for the log file, It is stored in your workspace in the meta-data directory. Check out workspace/.metadata/.log.
-	- Configuration log - Sometimes information is record in the configuration log file instead of the workspace log. (especially if the workspace hasn't been created yet, there isn't one, or it cannot be created) Check your configuration area for a configuration log file. (configuration/<timestamp>.log)
-- Console errors: Occasionally problems happen in the system really early before there is a workspace and before there is a configuration area. This means that there is nowhere to write the log file so information is written to the console. For that launch the factory using the eclipsec.exe executable instead of eclipse.exe.
 
 
 Sanity check procedures
@@ -137,6 +125,18 @@ the error is identified with these tests, the system admin will very
 often have to resort to more concrete and specific testing to pinpoint
 the exact point of error and a possible solution. Such specific testing
 is out of the scope of this section.
+
+Error handling & Logging
+------------------------
+
+The factory is based on Eclipse which provides error managements and diagnostic element. The factory follows this philosophy providing :
+
+- Error Dialogs: The factory displays messages using message dialogues to display information to the user (errors or informations)
+- Log information: the factory has a log file where problems are recorded. The log file can be found in a couple of places:
+	- Workspace log - This is the most common location for the log file, It is stored in your workspace in the meta-data directory. Check out workspace/.metadata/.log.
+	- Configuration log - Sometimes information is record in the configuration log file instead of the workspace log. (especially if the workspace hasn't been created yet, there isn't one, or it cannot be created) Check your configuration area for a configuration log file. (configuration/<timestamp>.log)
+- Console errors: Occasionally problems happen in the system really early before there is a workspace and before there is a configuration area. This means that there is nowhere to write the log file so information is written to the console. For that launch the factory using the eclipsec.exe executable instead of eclipse.exe.
+
 
 Resource availability
 ---------------------
